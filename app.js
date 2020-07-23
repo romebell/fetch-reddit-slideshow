@@ -1,16 +1,19 @@
-document.addEventListener("DomContentLoaded", function() {
+//document.addEventListener("DomContentLoaded", function() {
     const requestURL = "https://www.reddit.com/search.json?q=Hypercars";
 
     fetch(requestURL)
-        .then(function (responseData){
+        .then (responseData => {
             console.log(responseData);
             return responseData.json();
         })
-        .then(function (jsonData) {
-            console.log(jsonData);
 
-            let results = jsonData.data.children;
-            let infoNeeded = results.map(function (imageResults) {
+        .then (data => {
+            console.log(data);
+
+            
+
+            let results = data.children;
+            let infoNeeded = results.map (imageResults => {
                 let image = imageResults.data.thumbnail;
                 return image;
             });
@@ -21,4 +24,5 @@ document.addEventListener("DomContentLoaded", function() {
                 imageShow.appendChild(imageDaddy);
             });
         });
-});
+
+
