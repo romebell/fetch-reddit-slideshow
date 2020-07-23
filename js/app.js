@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function(){
   
     })
     button1.addEventListener('click', getTextValue)
+
+    input2.addEventListener('keyup', function (event) {
+        if (event.keyCode === 13) {
+            
+            getTextValue();
+        }
+    })
 })
 
 
@@ -77,11 +84,11 @@ function makeImage (data) {
     image1.style.borderRadius = '10px';
     count++;
 
-    if (count>picArray.length) {
-        
+    if (count===picArray.length) {
+        count = 0;
     }
     
-    }, 5000)
+    }, 1000)
     // if (count === picArray.length) {
     //     count = 0;
     // }
