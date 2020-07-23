@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function()
     let containerTwo = document.querySelector(".container-2");
     let mechPicture = [];
     let slideIndex = 0;
+    let pausedIndex;
 
     function displayPic()
     {
@@ -16,14 +17,21 @@ document.addEventListener("DOMContentLoaded", function()
             getPics[i].style.display = "none";
         }
 
-        slideIndex++;
+        if (slideIndex !== null)
+        {
+            slideIndex++;
+        }
+        
         if (slideIndex > getPics.length) 
         {
             slideIndex = 1
         }
 
         getPics[slideIndex - 1].style.display = "block";
-        setTimeout(displayPic, 5000);
+        if (slideIndex !== null)
+        {
+            setTimeout(displayPic, 5000);
+        }
     }
 
     //if click start, remove all current elements and load slides
@@ -70,6 +78,30 @@ document.addEventListener("DOMContentLoaded", function()
             }
             displayPic();
 
+            let pauseButton = document.createElement("button");
+            pauseButton.classList.add("pause");
+            pauseButton.textContent = "PAUSE";
+            body.appendChild(pauseButton);
+            body.style.display = "flex";
+            pauseButton.addEventListener("click", function()
+            {
+                pausedIndex = slideIndex;
+                slideIndex = null;
+                pauseButton.style.display = "none";
+
+                let resumeButton = document.createElement("button");
+                resumeButton.classList.add("resume");
+                resumeButton.textContent = "RESUME";
+                body.appendChild(resumeButton);
+                body.style.display = "flex";
+                resumeButton.addEventListener("click", function()
+                {
+                    slideIndex = pausedIndex;
+                    resumeButton.remove();
+                    displayPic();
+                    pauseButton.style.display = "flex";
+                })
+            })
 
         });
 
