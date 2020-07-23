@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // create elements
             makeImageElement(data)
             // cycle thru classes
-            // cycleImages()
+            cycleImages()
             }
         )
         .catch(function(error){
@@ -111,18 +111,16 @@ function checkBlanks(image, newImage, item) {
 function cycleImages() {
     // should run until stop button is clicked
     let n = 0
-    while(n < 10) {
+    setInterval(function() {
         const carousel = document.querySelector('.carousel-inner').children
         carousel[n+1].classList.value = 'carousel-item active'
         carousel[n].classList.value = 'carousel-item'
-        // console.log(carousel)
-        // pause(2000).then(n++) // paus function attempt
-        console.log(n)
-        // if at end, start over
+        n++
         if (n === 9){
             n = 0
             carousel[0].classList.value = 'carousel-item active'
             carousel[9].classList.value = 'carousel-item'
         }
-    }
+    }, 1000)
+
 }
