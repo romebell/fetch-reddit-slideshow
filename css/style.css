@@ -1,7 +1,7 @@
 body {
     background:#393737;
     text-align: center;
-    
+    font-family: 'Ultra', serif;
 }
 h1 {
     color: gray;
@@ -21,4 +21,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+.btn {
+    margin-top: 20px;
 }
