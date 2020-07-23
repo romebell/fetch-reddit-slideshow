@@ -1,4 +1,4 @@
-body{
+body {
     color: blanchedalmond;
     font-family: sans-serif;
     background-color: black;
@@ -6,19 +6,27 @@ body{
     margin-top: 15%;
 }
 
-h1{
+h1 {
     font-size: 2.5rem;
 }
 
-.search-input{
+.search-input {
     width: 300px;
     height: 40px;
     font-size: 1rem;
 }
 
-.search-btn{
+.search-btn {
     height: 40px;
     background-color: black;
     border: none;
     position: absolute;
+}
+
+.carousel {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 500px;
+    top: 100px;
 }
