@@ -1,11 +1,10 @@
 
-//document.addEventListener("DOMContentLoaded", function(){
-//const container = document.querySelector('.container')
-const stop = document.querySelector('.stop')
+document.addEventListener("DOMContentLoaded", function(){
+const requestURL = 'https://www.reddit.com/search.json?q=famous+buildings+nsfw:no'
+const imageArray = document.querySelectorAll('.carousel-item')
+//const stop = document.querySelector('.stop')
 
-
-fetch ('https://www.reddit.com/search.json?q=famous+buildings+nsfw:no')
-
+fetch (requestURL)
 .then (response => {
     console.log(response)
     return response.json();
@@ -18,29 +17,28 @@ fetch ('https://www.reddit.com/search.json?q=famous+buildings+nsfw:no')
 
     let thumbnailOne =data.data.children[0].data.thumbnail;
     console.log(thumbnailOne);
-    let thumbnailTwo = data.data.children[1].data.thumbnail;
-    console.log(thumbnailTwo);
-    let thumbnailThree = data.data.children[2].data.thumbnail;
-    console.log(thumbnailThree);
     
-    // let thumbnail = children.map(function(thumbnailResults){
-    // let image = thumbnailResults.data.thumbnail;
-    // return image;
-    })
-    
+    let thumbnailResult = data.data.children;
+
+    for(let i = 0; i < thumbnailResult.length; i++){
+        let thumbnail = thumbnailResult[i].data.thumbnail;
+        console.log(thumbnail);
+
+        imageArray[i].src = thumbnail;
+    }
+
     
 
-const imageShow = document.createElement('div')
-thumbnail.forEach(image => {
-    let imageBuilding = document.createElement('image');
-    imageBuilding.src = `${image}`;
-    imageShow.appendChild(imageBuilding);
+
+// const imageShow = document.createElement('div')
+// thumbnail.forEach(image => {
+//     let imageBuilding = document.createElement('image');
+//     imageBuilding.src = `${image}`;
+//     imageShow.appendChild(imageBuilding);
 })
 
-const getStop = () => {
+// const getStop = () => {
 
-stop.addEventListener('click', getStop)
+// stop.addEventListener('click', getStop)
 
-}
-
-
+//}
