@@ -1,12 +1,12 @@
 .container {
     
     display: flex;
-    
+    flex-direction: columnrow;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 100px;
     padding-top: 100px;
-    align-content: center;
+    align-items: center;
 
 } 
 
@@ -18,15 +18,20 @@ h1 {
 }
 
 button {
-    display: flex;
-    align-items: center;
+    
+    align-content; space-between;
     margin-top: 30px;
     width: 150px;     
 }
 
 
+
 .form-control{
+    display: flex;
+    justify-content: center;
     width: 650px;
     text-align: center;
+    margin-right: 200px;
+    margin-left: 200px;
     
 }
