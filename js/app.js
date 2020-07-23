@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function()
     {
         container.style.display = "none";
         containerTwo.style.display = "flex";
-        fetch("https://www.reddit.com/search.json?q=mechanical+keyboards")
+        fetch("https://www.reddit.com/search.json?q=mechanical+keyboards+nsfw:no")
         .then(response =>
         {
             if (response.status === 200)
