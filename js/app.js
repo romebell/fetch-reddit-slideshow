@@ -5,6 +5,14 @@
     const container1 = document.getElementById('container1');
     const container2= document.getElementById('container2');
     let slide = []
+
+    for (let j = 0; j < slide.length; j++){
+        let image = document.createElement('img')
+        image.src = slide[j]
+        
+    }
+    console.log(slide);
+    
     
     document.getElementById('slideShow').addEventListener('click',() =>{
         
@@ -53,12 +61,7 @@
             // document.getElementById('container1').appendChild(slide[0])
             // console.log(slide);
 
-            for (let j = 0; j < searchResults.length; j++){
-                let image = document.createElement('img')
-                image.src = searchResults[j]
-                
-            }
-            console.log(searchResults);
+            
 
 
             
