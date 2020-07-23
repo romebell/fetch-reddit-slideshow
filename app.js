@@ -1,31 +1,46 @@
-document.addEventListener("DOMContentLoaded", function () {
-    
-    let firstPart = 'https://www.reddit.com/search.json?q='; //Martin explain how they was easier to use so that 
-    let search = document.getElementById('search').value; //it would take into consideration of what people would type in
-    let lastPart = '+nsfw:no';
-    
-    requestURL = firstPart + search + lastPart;
-   
-    fetch(requestURL)
-        .then(response => {
-            return response.json();
-        }) 
-        
-        .then (data => {
-            // console.log(data);
+var container1 = document.getElementById('container1');
+var container2 = document.getElementById('container2');
+var image1 = document.getElementById('image');
+var stop1 = document.getElementById('stop');
+var firstPart = 'https://www.reddit.com/search.json?q=';
+var lastPart = '+nsfw:no';
+var submit1 = document.getElementById('submit');
 
-            // if(data.blog === ''){
-            //     console.log('There is no info here');
-            // }
 
-            if (data.email === null) {
-                console.log('there is nada here');
+
+document.getElementById('submit').addEventListener('click', submitOne);
+document.getElementById('stop').addEventListener('click', stopOne);
+
+
+function submitOne() {
+    container1.style.display='none';
+    container2.style.display='block';
+    var search = document.getElementById('search').value;
+    var fullAddress = firstPart + search + lastPart;
+    fetch(fullAddress)
+    .then (response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log(fullAddress);
+        console.log(data.data.children[1].data.thumbnail.length);
+        function imgRot(){ 
+        for (i = 1; i < 10; i++) {
+            if (i ==9){
+                i = 1;
+            } else {
+                image1.src =data.data.children[i].data.thumbnail;
+                console.log(data.data.children[i].data.thumbnail);
             }
-
-
-        });
-
-});
+        }
+    }
+    setTimeout(imgRot(), 5000);
+})
+}
+function stopOne () {
+    container1.style.display='block';
+    container2.style.display='none';
+}
 
 
 
