@@ -5,17 +5,13 @@ body {
 
 }
 
-.container {
-
-}
-
 
 
 .container h1{
     margin-top: 100px;
-    font-family: 'Bungee', cursive;
+    font-family: 'Bungee', sans-serif;
     text-align: center;
-    font-size: 50px;
+    font-size: 70px;
     color: turquoise;
     text-shadow: #000 1px 0px 3px;
 
