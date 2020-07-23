@@ -4,7 +4,8 @@ const container = document.querySelector('.container');
 const header = document.querySelector('header');
 const redditJSON = 'https://www.reddit.com/search.json?q='
 const sfw = '+nsfw:no'
-// let imageArray = 
+const stopButton = document.createElement('button');
+let imageArray = []
 
 document.addEventListener('DOMContentLoaded', function() {
     submitButton.addEventListener('click', function() {
@@ -21,26 +22,40 @@ document.addEventListener('DOMContentLoaded', function() {
           let results = jsonData;
           let children = results.data.children
           console.log(children);
-          for (let i = 0; i <= 10; i++) {
+          for (let i = 0; i <= 15; i++) {
               // does a catch() call go in here?
-              let newImage = document.createElement('img');
-              newImage.src = children[i].data.thumbnail;
-              container.appendChild(newImage);
-              // make an array instead? 
-              // imageArray.push children[i].data.thumbnail;
+              let eachImage = children[i].data.thumbnail;
+              let createNewImage = document.createElement('img');
+               // this logic caused no images to display
+              // if (eachImage != 'self' && 
+              // eachImage != 'image' && 
+              // eachImage != undefined &&
+              // eachImage != 'default') { 
+              imageArray.push(eachImage);
+              createNewImage.src = imageArray[i];
+              console.log(createNewImage.src);
+              container.appendChild(createNewImage);
+              // console.log(imageArray);
+              // }
+              }
           }
 
-      })
+      )
       hideElements();
+      showStopButton();
       
   })
 })
+
+// if (eachImage.includes('.jpg') || 
+//               eachImage.includes('.png') || 
+//               eachImage.includes('.gif')) {
 
 function hideElements() {
   submitButton.style.visibility = 'hidden';
   textField.style.visibility = 'hidden';
   header.style.visibility = 'hidden';
-  showStopButton();
+  
 }
 
 function showElements() {
@@ -50,11 +65,29 @@ function showElements() {
 }
 
 function showStopButton() {
-  const stopButton = document.createElement('button');
   stopButton.setAttribute('id', 'stop-button');
   stopButton.textContent = 'Stop Slideshow  '
   container.appendChild(stopButton);
+  clickStopButton();
 }
+
+function clickStopButton() {
+  stopButton.addEventListener('click', function() {
+    resetPhotos();
+    showElements();
+    
+  }
+)};
+
+// const checkImage = () => 
+
+// function resetPhotos() {
+//   // need to refactor to easily remove images   
+//   imageArray = []
+//   let allImages = document.querySelectorAll('img'); // add class to all images
+//   allImages.forEach(function () {
+//     remove())
+// }
 
 
 const carouselControls = document.createElement('div');
@@ -127,3 +160,7 @@ carouselItemNotActive.setAttribute('alt', 'Second slide');
 //   .catch(error => {
 //     console.log('this is an error: ' + error);
 //   }) // write after last .then - if something wrong
+
+            // newImage.src = children[i].data.thumbnail;
+            // newImage.style.flexDisplay = 'row'; // this throws invalid assignment
+            // the above works, but mvp is to make an array 
