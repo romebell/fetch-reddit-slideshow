@@ -32,7 +32,7 @@ Reddit sometimes contains some offensive images be careful with your search term
 * Repeat animation until use clicks "stop"
 
 #### When the user clicks the "stop" button
-
+        
 * Animation stops / images are removed
 * Form / title / description are shown again
 * User can enter a new search term
