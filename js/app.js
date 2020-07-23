@@ -50,14 +50,14 @@ document.addEventListener("DOMContentLoaded", function()
         killFunction = false;
     }
 
-    // function removeImages(array)
-    // {
-    //     for (let i = 0; i < array.length; i++)
-    //     {
-    //         let addedImage = document.querySelector(".slides");
-    //         addedImage.remove();
-    //     }
-    // }
+    function removeImages(array)
+    {
+        for (let i = 0; i < array.length; i++)
+        {
+            let addedImage = document.querySelector(".slides");
+            addedImage.remove();
+        }
+    }
 
     //if click start
     button.addEventListener("click", function()
@@ -105,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function()
             //check if we have the URLs
             console.log(mechPicture);
 
+            //just in case error accidentally increments it
+            slideIndex = 0;
             //create the images on HTML through DOM
             createImages(mechPicture);
             
@@ -115,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function()
             let resumeButton = document.createElement("button");
             let pauseButton = document.createElement("button");
             let restartButton = document.createElement("button");
+            let stopButton = document.createElement("button");
 
             /*
             pauseButton.classList.add("pause");
@@ -141,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function()
             });
             */
             
+            /*
             restartButton.classList.add("restart");
             restartButton.textContent = "RESTART"
             body.appendChild(restartButton);
@@ -164,6 +168,22 @@ document.addEventListener("DOMContentLoaded", function()
                     restartButton.style.display = "flex";
                 }, 2450);
                 setTimeout(displayPic, 2500);
+            });
+            */
+
+            //quick fix, wrong description read
+            stopButton.classList.add("restart");
+            stopButton.textContent = "STOP"
+            body.appendChild(stopButton);
+            stopButton.addEventListener("click", function()
+            {
+                stopButton.style.display = "none";
+                restartButton.style.display = "none";
+                clearTimeout();
+                removeImages(mechPicture);
+
+                containerTwo.style.display = "none";
+                container.style.display = "flex";
             });
 
 
