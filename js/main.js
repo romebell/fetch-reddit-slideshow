@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             makeImageElement(data)
+            console.log(data)
             cycleImages()
             }
         )
@@ -62,7 +63,7 @@ function makeImageElement(data){
 
     for (let i = 0; i < 20; i++){
         let object = data.data.children[i]
-        let image = object.data.thumbnail
+        let image = object.data.url
 
         if (i === 0) {
             const item = document.createElement('div')
