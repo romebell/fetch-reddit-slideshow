@@ -1,12 +1,12 @@
 const submitButton = document.querySelector('button')
 const textField = document.querySelector('input')
 const container = document.querySelector('.container')
+const heading = document.querySelector('h1');
 const redditJSON = 'https://www.reddit.com/search.json?q='
 const sfw = '+nsfw:no'
 
 document.addEventListener('DOMContentLoaded', function() {
-    submitButton.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {}
+    submitButton.addEventListener('click', function() {
         console.log(textField.value);
         fetch(redditJSON + textField.value + sfw)
         .then(function(responseData) { // fetch data with url
@@ -27,10 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
         })
-        
+        hideElements();
         
     })
 })
+
+function hideElements() {
+  submitButton.style.visibility = 'hidden';
+  textField.style.visibility = 'hidden';
+  heading.style.visibility = 'hidden';
+}
 
 const carouselControls = document.createElement('div');
 carouselControls.classList.add('carousel', 'slide'); 
@@ -44,9 +50,16 @@ carouselInner.classList.add('carousel-inner');
 const carouselItemActive = document.createElement('div');
 carouselItemActive.classList.add('carousel-item', 'active');
 
+// append to carouselItemsActive
+const activeImage = document.createElement('img');
+activeImage.classList.add('d-block', 'w-100');
+activeImage.setAttribute('alt', 'First slide');
+// add newImage.src at [0] activeImage.src =
 
-carouselControls.
-container.appendChild
+// const carouselNotActive = ''
+
+// carouselControls.
+// container.appendChild
 // boontscrap
 /* <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
