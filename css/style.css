@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+body {
+    background-color: #FCC9C5;
+    text-align: center;
+}
+
+body h1{
+    font-family: 'Bungee', cursive;
+}
