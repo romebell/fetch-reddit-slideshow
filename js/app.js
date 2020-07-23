@@ -55,7 +55,9 @@ function getTextValue () {
     })
     .then(data => {
 
+        
         makeImage(data)
+        
     })
     .catch(error => {
         console.log('Error', error)
@@ -70,8 +72,10 @@ function getTextValue () {
 }
 
 function makeImage (data) {
-
+    
     let loopArray = data.data.children;
+    
+    console.log(loopArray)
     
     setInterval(function () {     
     
@@ -89,52 +93,22 @@ function makeImage (data) {
     }
     
     }, 1000)
-    // if (count === picArray.length) {
-    //     count = 0;
-    // }
-
+    
     
 
     for (let i = 0; i < loopArray.length; i ++) {
         let pic = loopArray[i].data.url;
-        if (pic.includes('jpg')){
+        if (pic.includes('jpg')) {
             picArray.push(pic);
             
             console.log(picArray)
         }
     }
-    // setInterval(makeImage, 5000)
+    
 } 
 
 
-function slideShow () {
-    ;
-    
-}
-    
-    // count ++;
-    // if (count > image1.length) {count = 1}
 
-
-// getTextValue();
-
-// image1.src = pic;
-                // image1.style.height = '300px';
-                // image1.style.width = '200px';
-                // image1.style.visibility = 'visible';
-        
-                
-                // if (pic === 'self' || pic === 'image' || pic === 'spoiler' || pic === 'default') {
-                    
-                    
-                //     image1.src = 'https://picsum.photos/200/300',
-                //     image1.style.visibility = 'visible'
-     
-                // }   else {
-                    
-                //     
-                    
-                // }
 
 
 
