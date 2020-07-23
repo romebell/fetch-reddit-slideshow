@@ -1,7 +1,7 @@
 const submitButton = document.querySelector('button')
 const textField = document.querySelector('input')
 const container = document.querySelector('.container')
-const heading = document.querySelector('h1');
+const header = document.querySelector('header');
 const redditJSON = 'https://www.reddit.com/search.json?q='
 const sfw = '+nsfw:no'
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let results = jsonData;
             let children = results.data.children
             console.log(children);
-            for (let i = 0; i <= 20; i++) {
+            for (let i = 0; i <= 10; i++) {
                 // does a catch() call go in here?
                 let newImage = document.createElement('img');
                 newImage.src = children[i].data.thumbnail;
@@ -35,8 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
 function hideElements() {
   submitButton.style.visibility = 'hidden';
   textField.style.visibility = 'hidden';
-  heading.style.visibility = 'hidden';
+  header.style.visibility = 'hidden';
 }
+
+function showElements() {
+  submitButton.style.visibility = 'visible';
+  textField.style.visibility = 'visible';
+  header.style.visibility = 'visible';
+}
+
+
 
 const carouselControls = document.createElement('div');
 carouselControls.classList.add('carousel', 'slide'); 
