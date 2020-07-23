@@ -1,13 +1,38 @@
 console.log('Please Tell me this work')
 const container = document.querySelector('.container')
-
 console.log(container)
+
 const searchInput = document.getElementById('inputSearch')
 console.log('search bar input ' + searchInput)
 
-searchInput.addEventListener('input', (event) =>{
-    console.log(event.target.value)
-})
+searchInput.addEventListener('input', () => searchProfile 
+(searchInput.target.value))
+console.log(searchInput)
+// console.log(event.target.value)
+
+
+
+
+const buttonInput = document.getElementById('buttonInput')
+    // buttonInput.addEventListener('click', () => buttunClick (buttonInput.target.value))
+        console.log('button input went off ' + buttonInput)
+        //need to create element and push into html
+        //when i click this button do this
+        //use .value
+        // const image = document.createElement('img')
+        // console.log(image)
+        // image.src = data[0].bHeartPic
+        
+//gotta have reset button  reload button
+//clicked remove go buttton
+//and reloaded location.load
+//location.reload  
+        //sign changes to a stop refresh airplane
+        //create container of images queryimages and pulling them in 
+        //if this button clicks go grab data
+        //fetch in the button
+
+
 
 fetch('https://secure-hamlet-19722.herokuapp.com/api/v1/characters')
 
