@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function()
                 slideIndex = 1
             }
 
+            console.log(slideIndex);
             getPics[slideIndex - 1].style.display = "block";
             
             if (killFunction === false)
@@ -43,10 +44,11 @@ document.addEventListener("DOMContentLoaded", function()
     {
         container.style.display = "none";
         containerTwo.style.display = "flex";
-        fetch("https://www.reddit.com/search.json?q=mechanical+keyboards+nsfw:no")
+        let proxyURL = "https://cors-anywhere.herokuapp.com/"
+        fetch(proxyURL + "https://www.reddit.com/search.json?q=mechanical+keyboards+nsfw:no")
         .then(response =>
         {
-            if (response.status === 200)
+            if (response.status === 200 || response.status === 204)
             {
                 return response.json();
             }
@@ -70,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function()
                 }
 
             }
+            console.log(mechPicture);
 
             for (let i = 0; i < mechPicture.length; i++)
             {
@@ -122,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function()
             });
 
 
-        });
+        })
 
 
 
