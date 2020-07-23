@@ -1,8 +1,9 @@
 const body = document.querySelector('body')
-const form = document.querySelector('.search-bar')
+const searchBar = document.querySelector('.search-bar')
 const submit = document.querySelector('.search-btn')
 
 submit.addEventListener('click', function() {
+    searchBar.style.display = 'none'
     console.log("searching");
     const input = document.querySelector('.search-input').value
     console.log(input);
@@ -43,7 +44,14 @@ fetch('https://www.reddit.com/search.json?q=cats+nsfw:no')
     image.src = pictureUrls[0]
     image.setAttribute('class', 'd-block w-100')
 
-    console.log(carousel, carouselInner, carouselItem, image);
+    carouselItem.appendChild(image)
+    carouselInner.appendChild(carouselItem)
+    carousel.appendChild(carouselInner)
+
+    console.log(carousel);
+    
+    //console.log(carousel, carouselInner, carouselItem, image);
+
 //     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 //   <div class="carousel-inner">
 //     <div class="carousel-item active">
@@ -57,5 +65,7 @@ fetch('https://www.reddit.com/search.json?q=cats+nsfw:no')
 //     </div>
 //   </div>
 // </div>
+
+//.carousel('pause')
 })
 
