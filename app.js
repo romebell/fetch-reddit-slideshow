@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", function (){
         body.removeChild(inputField);
     
 
-fetch("https://www.reddit.com/search.json?q=cute+puppies")
-.then(responseData => {
-    console.log(responseData);
-    return responseData.json();
+fetch(requestURL)
+.then(response => {
+    console.log(response);
+    return response.json();
 })
 .then(jsonData => {
     //console.log(jsonData);
@@ -33,6 +33,7 @@ fetch("https://www.reddit.com/search.json?q=cute+puppies")
 
     for (let i = 0; i < 20; i++) {
         let thumbnail = picture[i].data.url;
+     
         //console.log(thumbnail);
         setInterval (
         function appendImagetoBody() {
@@ -41,7 +42,7 @@ fetch("https://www.reddit.com/search.json?q=cute+puppies")
         //previousImg.remove();
         if (previousImg != null) {
             previousImg.remove();
-        }
+        } 
 
         const image = document.createElement("img");
         image.src = thumbnail;
@@ -53,44 +54,7 @@ fetch("https://www.reddit.com/search.json?q=cute+puppies")
 }
 }) 
 
-
 })
-// .then(jsonData => {
-//     //console.log(jsonData);
-
-//     //let allImages = jsonData.data.children;
-//     //console.log(allImages);
-//     let picture = jsonData.data.children;
-//     //const image = document.createElement("img");
-
-//     for (let i = 0; i < 20; i++) {
-//         let thumbnail = picture[i].data.url;
-//         //console.log(thumbnail);
-//         setInterval (
-//         function appendImagetoBody() {
-
-//         const previousImg = document.querySelector(".images");
-//         //previousImg.remove();
-//         if (previousImg != null) {
-//             previousImg.remove();
-//         }
-
-//         const image = document.createElement("img");
-//         image.src = thumbnail;
-//         image.classList.add("images");
-//         let div = document.querySelector("div");
-//         div.appendChild(image);
-//         //console.log(image)
-//     } , 2000);
-// }
-// }) 
-
-//function to search for images when button is pressed
-function searchReddit() {
-    let grabText = document.querySelector("input").value;
-    let searchButton = document.querySelector("search");
-
-}
 
 })
 
