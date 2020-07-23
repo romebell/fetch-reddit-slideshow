@@ -1,5 +1,6 @@
 const submitButton = document.querySelector('button')
 const textField = document.querySelector('input')
+const container = document.querySelector('.container')
 const redditJSON = 'https://www.reddit.com/search.json?q='
 const sfw = '+nsfw:no'
 
@@ -14,8 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(function(jsonData) {
             let results = jsonData;
-            console.log(results);
-            
+            let children = results.data.children
+            console.log(children);
+            for (let i = 0; i <= 5; i++) {
+                let newImage = document.createElement('img');
+                newImage.src = children[i].data.thumbnail;
+                container.appendChild(newImage);
+
+            }
+
         })
         
         
