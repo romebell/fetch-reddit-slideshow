@@ -17,13 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
             let results = jsonData;
             let children = results.data.children
             console.log(children);
-            for (let i = 0; i <= 5; i++) {
+            for (let i = 0; i <= 10; i++) {
+                // does a catch() call go in here?
                 let newImage = document.createElement('img');
                 newImage.src = children[i].data.thumbnail;
                 container.appendChild(newImage);
 
             }
 
+        })
+        .catch(function(error) {
+            console.log('Oh no! it a ewwow', error);
         })
         
         

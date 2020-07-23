@@ -16,3 +16,6 @@ body {
     text-shadow: #000 1px 0px 3px;
 }
 
+.container img {
+    margin: 50px 0;
+}
