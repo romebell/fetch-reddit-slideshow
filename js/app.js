@@ -41,6 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
           }
 
       )
+      .catch(err => {
+        // happens if something breaks
+        console.log('Error', err)
+    })
       hideElements();
       showStopButton();
       
