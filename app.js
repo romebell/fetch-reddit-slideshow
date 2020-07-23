@@ -1,18 +1,27 @@
-fetch("http://api.reddit.com/hot.json")
-//("https://www.reddit.com/search.json?q=$%7Bvalue%7D+nsfw:no")
-//("https://www.reddit.com/r/todayilearned/top.json?count=N&after=t3_XXXXX")
-.then(response => {
-    return response.json();
+document.addEventListener("DOMContentLoaded", function (){
+    fetch("https://www.reddit.com/search.json?q=cute+puppies")
+.then(responseData => {
+    console.log(responseData);
+    return responseData.json();
 })
-.then (data => {
-    console.log(data);
-    let allArticles = data.data.children;
-    console.log(allArticles);
+.then(jsonData => {
+    //console.log(jsonData);
 
-    //I'm trying to loop through the articles and return each of them
-    for (i = 0; i < allArticles.length; i++) {
-        const loop = allArticles[i];
-        console.log(loop);
-        return loop
+    //let allImages = jsonData.data.children;
+    //console.log(allImages);
+    let picture = jsonData.data.children;
+    for (let i = 0; i < picture.length; i++) {
+        //let allImages = jsonData.data.children[i];
+        let thumbnail = picture[i].data.url;
+        console.log(thumbnail);
+
+        const image = document.createElement("img");
+        image.src = thumbnail;
+        image.classList.add("image");
+        let body = document.querySelector("body");
+        body.appendChild(image);
+       //console.log(imageCycle);
     }
+})
+
 })
