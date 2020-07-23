@@ -1,6 +1,7 @@
 body {
     text-align: center;
     background-color: grey;
+    font-family: 'Poppins', sans-serif;
 }
 
 h1 {
@@ -18,10 +19,12 @@ input {
     width: 400px;
     font-size: 20px;
     font-style: italic;
+    font-family: 'Poppins', sans-serif;
 }
 
 button {
     height: 56px;
     width: 200px;
     font-size: 20px;
+    font-family: 'Poppins', sans-serif;
 }
