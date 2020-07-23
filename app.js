@@ -28,20 +28,36 @@ function submitOne() {
         for (i = 1; i < 10; i++) {
             if (i ==9){
                 i = 1;
-            } else {
-                image1.src =data.data.children[i].data.thumbnail;
-                console.log(data.data.children[i].data.thumbnail);
+                } else {
+                image1.src = data.data.children[i].data.thumbnail;
+                //console.log(photos);
+                }
             }
         }
-    }
-    setTimeout(imgRot(), 5000);
-})
+        setTimeout(imgRot, 9000);
+    })
 }
+
 function stopOne () {
     container1.style.display='block';
     container2.style.display='none';
 }
 
+
+// const body = document.getElementById('container2');
+// body.style.width = '18rem';
+// console.log(body);
+
+// const image = document.getElementById('image');
+// image.src = image1.src; 
+// image.atl = image1.src;
+// console.log(image);
+
+
+// console.log(body.appendChild(image));
+
+
+//  <div id="container2" style="display: none">
 
 
 
