@@ -1,8 +1,13 @@
 console.log('Please Tell me this work')
 const container = document.querySelector('.container')
+
 console.log(container)
-const searchBar = document.getElementById('.inputSearch')
-console.log('search bar input ' + searchBar)
+const searchInput = document.getElementById('inputSearch')
+console.log('search bar input ' + searchInput)
+
+searchInput.addEventListener('input', () =>{
+    console.log('input event is going')
+})
 
 fetch('https://secure-hamlet-19722.herokuapp.com/api/v1/characters')
 
@@ -11,7 +16,7 @@ fetch('https://secure-hamlet-19722.herokuapp.com/api/v1/characters')
     console.log(response)
     return response.json()
 })
-
+//array of characters
 .then(data =>{
     console.log(data)
     
@@ -74,6 +79,11 @@ fetch('https://secure-hamlet-19722.herokuapp.com/api/v1/characters')
     console.log(akumaPic)
     let akumaSide = data[28].universe
     console.log(akumaSide)
+
+    //making a card
+
+
+
 })
 
 // var imgArray = new Array();
