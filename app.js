@@ -1,31 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    const requestURL = "https://www.reddit.com/search.json?q=puppies";
-
-
+    let firstPart = 'https://www.reddit.com/search.json?q='; //Martin explain how they was easier to use so that 
+    let search = document.getElementById('search').value; //it would take into consideration of what people would type in
+    let lastPart = '+nsfw:no';
+    
+    requestURL = firstPart + search + lastPart;
+   
     fetch(requestURL)
-        .then (function (responseData) {
-            return responseData.json();
-        })
-            .then(function(jsonData) {
+        .then(response => {
+            return response.json();
+        }) 
+        
+        .then (data => {
+            // console.log(data);
 
-                let results = jsonData.data.children;
-                let resultsTwo = results.map(function (imageResults) {
-                    let dogImages = imageResults.data.thumbnail;
-                    return dogImages;
-                });
+            // if(data.blog === ''){
+            //     console.log('There is no info here');
+            // }
 
-                const imagePre = document.getElementById("sup");
-                resultsTwo.forEach((image) => {
-                    let bigImage = document.createElement("img");
-                    bigImage.src = `${bigImage}`;
-                    imagePre.appendChild(bigImage);
+            if (data.email === null) {
+                console.log('there is nada here');
+            }
 
 
-                });
-
-
-            });
+        });
 
 });
 
