@@ -1,0 +1,11 @@
+body {
+    background-image: url('https://i.imgur.com/cgk0Gss.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: initial;
+    position: relative;
+}
+
+.navbar {
+    margin: 150px;
+}
