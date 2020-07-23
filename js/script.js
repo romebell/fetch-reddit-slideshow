@@ -1,5 +1,11 @@
 const form = document.querySelector('.container')
-const holderImage = document.querySelector(".holder")
+const imageArray = document.querySelectorAll(".holder")
+const button = document.createElement("button");
+    console.log(button);
+    button.classList.add('reset-button')
+    form.appendChild(button);
+
+
 form.addEventListener("submit", function(e){
     e.preventDefault()
     const value = document.getElementById("input").value
@@ -13,22 +19,31 @@ form.addEventListener("submit", function(e){
         
     }).then(function(data){
         let thumbSearch = data.data.children;
-        console.log(data)
+        console.log(data);
+        // if(data.blog === null);
+        // console.log('ther is not info here');
+        // if(data.thumbnail === '')
+        // console.log('here is something')
         
         for (let i = 0; i < thumbSearch.length; i++){
             
-            let thumbNails = thumbSearch[5].data.thumbail;
+            let thumbNails = thumbSearch[i].data.thumbnail;
             console.log(thumbNails);
+            console.log(imageArray);
+            imageArray[i].src = thumbNails
             
-            // const displayP = document.getElementsByTagName('body');
-            // displayP.src = thumbNails;
-            // .appendChild(thumbNails);
-            // console.log();
-
+            
+            
+            
+            
         }
-
-    })
-
+        
+    }).catch(error => {
+        console.log("this is an error" + error)
+    } )
+    
+    
+    
     //console.log(response)
 })
 
