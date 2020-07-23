@@ -1,0 +1,47 @@
+body
+{
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+h1
+{
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 60px;
+    padding-bottom: 5px;
+    padding-top: 0px;
+}
+
+.container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+p
+{
+    margin: 10px;
+}
+
+button.start
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: fit-content;
+    font-size: 20px;
+    padding-top: 7px;
+}
+
+img#reddit
+{
+    padding: 2px;
+    width: 30px;
+}
