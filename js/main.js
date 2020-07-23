@@ -8,6 +8,7 @@ const input = document.querySelector('input')
 const stopButton = document.createElement('button')
 stopButton.setAttribute('type', 'button')
 stopButton.textContent = 'Forgot My Sign'
+let n = 0
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             makeImageElement(data)
+            cycleImages()
             }
         )
         .catch(function(error){
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
     stopButton.addEventListener('click', event =>{
-        let slideShow = document.querySelector('.slideshow')
+        let slideShow = document.querySelector('.carousel slide')
         goContainer.removeChild(stopButton)
         header.appendChild(title)
         header.appendChild(instructions)
@@ -49,24 +51,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function makeImageElement(data){
     const slideShow = document.createElement('div')
-    slideShow.classList.add('slideshow')
+    slideShow.setAttribute('class', 'carousel slide')
+    slideShow.setAttribute('id', 'carouselExampleSlidesOnly')
+    slideShow.setAttribute('data-ride', 'carousel')
+    const innerSlide = document.createElement('div')
+    innerSlide.classList.add('carousel-inner')
+    slideShow.appendChild(innerSlide)
 
-    for (let i = 0; i < 20;i++){
+    body.appendChild(slideShow)
+
+    for (let i = 0; i < 20; i++){
         let object = data.data.children[i]
         let image = object.data.thumbnail
-        let newImage = document.createElement('img')
-        newImage.classList.add('img')
 
-        if (image === 'image' || image === 'self' || image === 'default' || image === 'nsfw'){
-            // newImage.src = 'https://picsum.photos/140/140'
+        if (i === 0) {
+            const item = document.createElement('div')
+            innerSlide.appendChild(item)
+            item.setAttribute('class', 'carousel-item active')
+            let newImage = document.createElement('img')
+            newImage.setAttribute('class', 'd-block w-100')
+            newImage.setAttribute('alt', '...')
+            checkBlanks(image, newImage, item)
+        } else {
+            const item = document.createElement('div')
+            innerSlide.appendChild(item)
+            item.classList.add('carousel-item')
+            let newImage = document.createElement('img')
+            newImage.setAttribute('class', 'd-block w-100')
+            newImage.setAttribute('alt', '...')
+            checkBlanks(image, newImage, item)
+        }
+
+        function checkBlanks(image, newImage, item) {if (image.includes('image') || image.includes('self') || image.includes('default') || image.includes('nsfw')){
+            newImage.src = 'https://picsum.photos/100/100'
         } else {
             newImage.src = image
-            slideShow.appendChild(newImage)
-            pushToPage(slideShow)
-        }
+            item.appendChild(newImage)
+        }}
+        
     } 
 }
-
-function pushToPage(newImage){
-    body.appendChild(newImage)
+function cycleImages() {
+    let n = 0
+    while(n < 20) {
+    const carousel = document.querySelector('.carousel-inner').childNodes
+    carousel[n+1].setAttribute('class', 'carousel-item active')
+    carousel[n].setAttribute('class', 'carousel-item')
+    setTimeout(n++, 5000)
+    }
+    // console.log(carousel)
 }
+
