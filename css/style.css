@@ -8,7 +8,7 @@ body {
     justify-content: center;
 }
 
-h1 {
+#header {
     font-family: 'Codystar', cursive;
     color: red;
     text-align: center;
@@ -81,20 +81,18 @@ form:hover .fa{
     color: white;
 }
 
-/* button {
-    width: 50px;
-    height: 25px;
+button {
+    font-family: 'Codystar', cursive;
+    /* width: 50px;
+    height: 25px; */
     align-self: center;
-} */
-
-#reset {
-    display: none;
-    align-self: center;
-}
-
-img {
     visibility: hidden;
+    
 }
+
+
+
+
 
 
 
