@@ -80,3 +80,21 @@ form:hover .fa{
     background: #07051a;
     color: white;
 }
+
+/* button {
+    width: 50px;
+    height: 25px;
+    align-self: center;
+} */
+
+#reset {
+    display: none;
+    align-self: center;
+}
+
+img {
+    visibility: hidden;
+}
+
+
+
