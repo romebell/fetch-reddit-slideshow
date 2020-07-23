@@ -72,7 +72,7 @@ function makeImageElement(data){
     body.appendChild(slideShow)
 
     // insert first 10 images
-    for (let i = 0; i < 10; i++){
+    for (let i = 0; i < 20; i++){
         let object = data.data.children[i]
         let image = object.data.url
         // console.log(image)
@@ -116,7 +116,7 @@ function cycleImages() {
         carousel[n+1].classList.value = 'carousel-item active'
         carousel[n].classList.value = 'carousel-item'
         n++
-        if (n === 9){
+        if (n === 19){
             n = 0
             carousel[0].classList.value = 'carousel-item active'
             carousel[9].classList.value = 'carousel-item'
