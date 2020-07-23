@@ -7,7 +7,7 @@ submit.addEventListener('click', function() {
     const input = document.querySelector('.search-input').value
     console.log(input);
 
-    //need to do somethinf with input 
+    //need to do something with input 
     fetch('https://www.reddit.com/search.json?q=cats+nsfw:no')
     .then(response => {
         return response.json()
@@ -34,24 +34,27 @@ submit.addEventListener('click', function() {
         const carouselInner = document.createElement('div')
         carouselInner.classList.add('carousel-inner')
         
-        const carouselItem = document.createElement('div')
-        carouselItem.classList.add('carousel-item')
-        carouselItem.classList.add('active')
+        for ( let i = 0; i < pictureUrls.length; i++) {
+            const carouselItem = document.createElement('div')
+            carouselItem.classList.add('carousel-item')
+            if (i === 0) {
+                carouselItem.classList.add('active')
+            }
 
-        const image = document.createElement('img')
-        image.src = pictureUrls[0]
-        image.setAttribute('class', 'd-block w-100')
-
-        carouselItem.appendChild(image)
-        carouselInner.appendChild(carouselItem)
+            const image = document.createElement('img')
+            image.src = pictureUrls[i]
+            image.setAttribute('class', 'd-block w-100')
+            
+            carouselItem.appendChild(image)
+            carouselInner.appendChild(carouselItem)
+            
+        }
+        console.log(carouselInner);
         carousel.appendChild(carouselInner)
         body.appendChild(carousel)
         console.log(body);
     })
 })
-
-    
-    //console.log(carousel, carouselInner, carouselItem, image);
 
 //     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 //   <div class="carousel-inner">
