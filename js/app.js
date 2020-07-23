@@ -1,42 +1,36 @@
-let body = document.querySelector("body");
-let container = document.querySelector(".container");
-let button = document.querySelector(".start");
-let containerTwo = document.createElement("div");
-containerTwo.classList.add("container-2");
-let mechPicture = [];
-//let multiplier = [0];
-let paused = true;
-
-function displayPic(array, index)
-{
-    let onePic = array[index];
-    let image = document.createElement("img");
-    image.setAttribute("src", onePic);
-    image.style.width = "200px";
-
-    containerTwo.appendChild(image);
-
-    console.log(image);
-    
-    setTimeout(removePic, 4999);
-    setTimeout(displayPic(array, index + 1), 5000);
-}
-
-function removePic()
-{
-    let oldPic = document.querySelector("img");
-    if (old !== null)
-    {
-        old.remove();
-    }
-}
-
 document.addEventListener("DOMContentLoaded", function()
 {
+    let body = document.querySelector("body");
+    let container = document.querySelector(".container");
+    let button = document.querySelector(".start");
+    let containerTwo = document.querySelector(".container-2");
+    let mechPicture = [];
+    let slideIndex = 0;
+
+    function displayPic()
+    {
+        var i;
+        let getPics = document.getElementsByClassName("slides");
+        for (i = 0; i < getPics.length; i++)
+        {
+            getPics[i].style.display = "none";
+        }
+
+        slideIndex++;
+        if (slideIndex > getPics.length) 
+        {
+            slideIndex = 1
+        }
+
+        getPics[slideIndex - 1].style.display = "block";
+        setTimeout(displayPic, 5000);
+    }
+
     //if click start, remove all current elements and load slides
     button.addEventListener("click", function()
     {
         container.style.display = "none";
+        containerTwo.style.display = "flex";
         fetch("https://www.reddit.com/search.json?q=mechanical+keyboards")
         .then(response =>
         {
@@ -61,15 +55,21 @@ document.addEventListener("DOMContentLoaded", function()
                 else if (imageType === "jpg" || imageType === "png")
                 {
                     mechPicture.push(image);
-                    //multiplier.push(multiplier[multiplier.length - 1] + 1);
                 }
 
             }
 
-            body.appendChild(containerTwo);
-            //HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-            displayPic(mechPicture, 0);
-            
+            for (let i = 0; i < mechPicture.length; i++)
+            {
+                let addImage = document.createElement("img");
+                addImage.setAttribute("src", mechPicture[i]);
+                addImage.classList.add("slides");
+                containerTwo.appendChild(addImage);
+                addImage.style.width = "200px";
+                addImage.style.display = "none";
+            }
+            displayPic();
+
 
         });
 
