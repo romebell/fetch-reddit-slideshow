@@ -6,7 +6,6 @@ body {
 h1 {
     color: gray;
 }
-
 .search-bar {
     background-color: transparent;
     outline: none;
@@ -16,12 +15,14 @@ h1 {
     padding: 3px 10px;
     width: 500px;
     color: white;
+    margin-top: 50px;
 }
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    margin-top: 150px;
 }
 .btn {
     margin-top: 20px;
+}
+img {
+    display: hide;
 }
