@@ -4,24 +4,32 @@ let button = document.querySelector(".start");
 let containerTwo = document.createElement("div");
 containerTwo.classList.add("container-2");
 let mechPicture = [];
+//let multiplier = [0];
+let paused = true;
 
-
-function displayPic(num)
+function displayPic(array, index)
 {
-    let img = document.createElement("img");
-    img.setAttribute("src", mechPicture[num]);
+    let onePic = array[index];
+    let image = document.createElement("img");
+    image.setAttribute("src", onePic);
+    image.style.width = "200px";
 
-    let old = document.querySelector(".remove");
+    containerTwo.appendChild(image);
 
-    if (num > 0)
-    {
-        containerTwo.remove(old);
-    }
-
-    containerTwo.appendChild(img);
-    img.classList.add("remove");
+    console.log(image);
+    
+    setTimeout(removePic, 4999);
+    setTimeout(displayPic(array, index + 1), 5000);
 }
 
+function removePic()
+{
+    let oldPic = document.querySelector("img");
+    if (old !== null)
+    {
+        old.remove();
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function()
 {
@@ -32,7 +40,10 @@ document.addEventListener("DOMContentLoaded", function()
         fetch("https://www.reddit.com/search.json?q=mechanical+keyboards")
         .then(response =>
         {
-            return response.json();
+            if (response.status === 200)
+            {
+                return response.json();
+            }
         })
         .then(data =>
         {
@@ -43,17 +54,22 @@ document.addEventListener("DOMContentLoaded", function()
                 let image = datas[i].data.url;
                 let imageType = image.substring(image.length - 3, image.length);
 
-                if (imageType === "jpg" || imageType === "png")
+                if (image === "" || image === null || image === undefined)
+                {
+                    console.log("ERROR: null data point");
+                }
+                else if (imageType === "jpg" || imageType === "png")
                 {
                     mechPicture.push(image);
+                    //multiplier.push(multiplier[multiplier.length - 1] + 1);
                 }
 
             }
 
-            for (let i = 0; i < mechPicture.length; i++)
-            {
-                setInterval(displayPic(i), 5000);
-            }
+            body.appendChild(containerTwo);
+            //HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+            displayPic(mechPicture, 0);
+            
 
         });
 
