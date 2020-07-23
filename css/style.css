@@ -1,0 +1,24 @@
+body {
+    background:#393737;
+    text-align: center;
+    
+}
+h1 {
+    color: gray;
+}
+
+.search-bar {
+    background-color: transparent;
+    outline: none;
+    outline-style: none;
+    border: none;
+    border-bottom: solid gray 1px;
+    padding: 3px 10px;
+    width: 500px;
+    color: white;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
