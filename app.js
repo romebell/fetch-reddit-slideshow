@@ -22,26 +22,26 @@ function submitOne() {
         return response.json();
     })
     .then(data => {
-        console.log(fullAddress);
-        console.log(data.data.children[1].data.thumbnail.length);
-        function imgRot(){ 
-        for (i = 1; i < 10; i++) {
-            if (i ==9){
-                i = 1;
-                } else {
-                image1.src = data.data.children[i].data.thumbnail;
-                //console.log(photos);
-                }
+        var numb1 = 1;
+        imgRot();
+        function imgRot() {
+            image1.src = data.data.children[numb1].data.thumbnail;
+            //console.log(data.data.children[numb1].data.thumbnail);
+            numb1 ++;
+            setTimeout(imgRot, 2000);
             }
-        }
-        setTimeout(imgRot, 9000);
-    })
+        })
+    
 }
 
 function stopOne () {
     container1.style.display='block';
     container2.style.display='none';
 }
+
+
+
+
 
 
 // const body = document.getElementById('container2');
