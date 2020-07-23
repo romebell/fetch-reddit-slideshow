@@ -55,3 +55,17 @@ img#slides
 {
     width: 200px;
 }
+
+.pause
+{
+    margin-top: 10px;
+    padding: 7px;
+    font-size: 20px;
+}
+
+.resume
+{
+    margin-top: 10px;
+    padding: 7px;
+    font-size: 20px;
+}

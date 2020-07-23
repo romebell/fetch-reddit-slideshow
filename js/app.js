@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function()
                 addImage.setAttribute("src", mechPicture[i]);
                 addImage.classList.add("slides");
                 containerTwo.appendChild(addImage);
-                addImage.style.width = "200px";
+                addImage.style.width = "500px";
                 addImage.style.display = "none";
             }
             displayPic();
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function()
                 {
                     slideIndex = pausedIndex;
                     resumeButton.remove();
-                    displayPic();
+                    setTimeout(displayPic, 2000);
                     pauseButton.style.display = "flex";
                 })
             })
