@@ -10,11 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(data => {
         
-        let result1 = data.data.children
-        let result2 = resul1.map(funtion(images) {
-
+        let result1 = data.data.children;
+        let result2 = result1.map(function(images) {
+            let myImage = images.data.thumbnail
+            return myImage
         });
-        console.log(result1);
-    })
+        const showMe = document.getElementById("show-me");
+        result2.forEach((myImage) => {
+            let imageSlide = document.createElement("img");
+            imageSlide.src = `${myImage}`
+            showMe.appendChild(imageSlide)
+        });
+    });
 
 });
