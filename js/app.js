@@ -1,10 +1,9 @@
 let body = document.querySelector("body");
 let container = document.querySelector(".container");
-let mechPicture = [];
 let button = document.querySelector(".start");
-
 let containerTwo = document.createElement("div");
 containerTwo.classList.add("container-2");
+let mechPicture = [];
 
 
 function displayPic(num)
@@ -16,10 +15,10 @@ function displayPic(num)
 
     if (num > 0)
     {
-        containerTwo.removeChild(old);
+        containerTwo.remove(old);
     }
-    
-    containerTwo.appendChild(mechPicture[num]);
+
+    containerTwo.appendChild(img);
     img.classList.add("remove");
 }
 
@@ -51,12 +50,9 @@ document.addEventListener("DOMContentLoaded", function()
 
             }
 
-
-            setInterval(5000, )
-
-            for (let i = 1; i < mechPicture.length; i++)
+            for (let i = 0; i < mechPicture.length; i++)
             {
-                setInterval(5000, )
+                setInterval(displayPic(i), 5000);
             }
 
         });
