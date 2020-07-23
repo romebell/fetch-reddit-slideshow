@@ -2,10 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="./css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <title>YOur Slice Show</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <div class="container1" style="display: yes">
+    <h1>Welcome to your personilized image Slide Show</h1>
+    <br>
+    <h2>Please type in the field what interests you in one world and the then "Submit" button, we will find some images and put them in a slide show</h2>
+    <br>
+    <input type="text" id="search1"></input><button id='submit1'>Submit</button>
+  </div>
+  <div class="container2" style="display: none">
+    <image id="showImage"></image>
+    <br>
+    <button id='stop1'>Stop</button>
+
+  </div>
+  <script src='/js/app.js'></script>
 </body>
 </html>
