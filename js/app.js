@@ -31,32 +31,61 @@ document.addEventListener("DOMContentLoaded", function()
             console.log(slideIndex);
             getPics[slideIndex - 1].style.display = "block";
             
-            if (killFunction === false)
-            {
-                setTimeout(displayPic, 2000);
-            }
+            setTimeout(displayPic, 2000);
             
         }
     }
 
-    //if click start, remove all current elements and load slides
+    function createImages(array)
+    {
+        for (let i = 0; i < array.length; i++)
+        {
+            let addImage = document.createElement("img");
+            addImage.setAttribute("src", array[i]);
+            addImage.classList.add("slides");
+            containerTwo.appendChild(addImage);
+            //addImage.style.width = "90vh";
+            addImage.style.display = "none";
+        }
+        killFunction = false;
+    }
+
+    // function removeImages(array)
+    // {
+    //     for (let i = 0; i < array.length; i++)
+    //     {
+    //         let addedImage = document.querySelector(".slides");
+    //         addedImage.remove();
+    //     }
+    // }
+
+    //if click start
     button.addEventListener("click", function()
     {
+        //remove all current elements and load pre-made empty container
         container.style.display = "none";
         containerTwo.style.display = "flex";
+
+        //proxy URL helps access data without getting blocked by "Access-Control-Allow-Origin" thing
         let proxyURL = "https://cors-anywhere.herokuapp.com/"
+        
+        //combine proxyURL with actual URL to prevent getting blocked
         fetch(proxyURL + "https://www.reddit.com/search.json?q=mechanical+keyboards+nsfw:no")
         .then(response =>
         {
-            if (response.status === 200 || response.status === 204)
+            //return status only if we are able to obtain a valid image URL
+            if (response.status === 200)
             {
                 return response.json();
             }
         })
         .then(data =>
         {
+            //bring data in
             datas = data.data.children;
 
+            //check if data is valid (not empty and only .jpg or .png)
+            //if valid, push URL mechPicture array
             for (let i = 0; i < datas.length; i++)
             {
                 let image = datas[i].data.url;
@@ -72,21 +101,22 @@ document.addEventListener("DOMContentLoaded", function()
                 }
 
             }
+
+            //check if we have the URLs
             console.log(mechPicture);
 
-            for (let i = 0; i < mechPicture.length; i++)
-            {
-                let addImage = document.createElement("img");
-                addImage.setAttribute("src", mechPicture[i]);
-                addImage.classList.add("slides");
-                containerTwo.appendChild(addImage);
-                addImage.style.width = "500px";
-                addImage.style.display = "none";
-            }
+            //create the images on HTML through DOM
+            createImages(mechPicture);
+            
+            //set individual image to display and change image displayed through recursive calling of function
             displayPic();
 
+            //create the three painful buttons
             let resumeButton = document.createElement("button");
             let pauseButton = document.createElement("button");
+            let restartButton = document.createElement("button");
+
+            /*
             pauseButton.classList.add("pause");
             pauseButton.textContent = "PAUSE";
             pP.appendChild(pauseButton);
@@ -109,22 +139,38 @@ document.addEventListener("DOMContentLoaded", function()
                     pauseButton.style.display = "flex";
                 });
             });
-
-            let restartButton = document.createElement("button");
+            */
+            
             restartButton.classList.add("restart");
             restartButton.textContent = "RESTART"
             body.appendChild(restartButton);
             restartButton.addEventListener("click", function()
             {
-                resumeButton.remove();
-                pauseButton.style.display = "flex";
-                killFunction = true;
-                slideIndex = 0;
-                setTimeout(displayPic, 500);
-                killFunction = false;
+                //pauseButton.style.display = "none";
+                restartButton.style.display = "none";
+                //resumeButton.remove();
+            
+                
+                slideIndex = null;
+                //slideIndex = 0;
+                //restartButton = null;
+                clearTimeout();
+                //removeImages(mechPicture);
+                //setTimeout(createImages(mechPicture), 1500);
+                setTimeout(function() {slideIndex = 0;}, 1500);
+                setTimeout(function()
+                {
+                    //pauseButton.style.display = "flex";
+                    restartButton.style.display = "flex";
+                }, 2450);
+                setTimeout(displayPic, 2500);
             });
 
 
+        })
+        .catch(error =>
+        {
+            console.log("BROWSER ACCESS ERROR");
         })
 
 

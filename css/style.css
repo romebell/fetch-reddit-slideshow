@@ -79,3 +79,10 @@ img#slides
     font-size: 20px;
     background-color: red;
 }
+
+.slides
+{
+    width: 95vw;
+    height: 80vh;
+    object-fit: cover;
+}
