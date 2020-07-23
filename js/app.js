@@ -11,26 +11,25 @@ document.addEventListener("DOMContentLoaded", function()
     function displayPic()
     {
         var i;
-        let getPics = document.getElementsByClassName("slides");
-        for (i = 0; i < getPics.length; i++)
-        {
-            getPics[i].style.display = "none";
-        }
-
         if (slideIndex !== null)
         {
+            let getPics = document.getElementsByClassName("slides");
+            for (i = 0; i < getPics.length; i++)
+            {
+                getPics[i].style.display = "none";
+            }
+            
             slideIndex++;
-        }
-        
-        if (slideIndex > getPics.length) 
-        {
-            slideIndex = 1
-        }
+            
+            if (slideIndex > getPics.length) 
+            {
+                slideIndex = 1
+            }
 
-        getPics[slideIndex - 1].style.display = "block";
-        if (slideIndex !== null)
-        {
+            getPics[slideIndex - 1].style.display = "block";
+            
             setTimeout(displayPic, 5000);
+            
         }
     }
 
