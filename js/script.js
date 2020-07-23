@@ -1,14 +1,24 @@
-//function to pull element from form and log into entry
-let input = 'kitten';
 
-//const requestURL = 'https://www.reddit.com/search.json?q='+ entry;
+//starts with an event listener, activated by the submit button.
+//event listener logs the value of entry into searchTerm, updates requestURL
+//then it activates fetch to create an array of thumbnails
+//it uses these thumbnail values to create the carousel function
+//it will also allow for a button that will make slideshow stop
+
+//function to pull element from form and log into entry
+//let input = 'kitten';
+
 
 let button = document.getElementsByTagName("submit");
-var searchTerm = input;
-let requestURL = 'https://www.reddit.com/search.json?q=' + searchTerm;
-button.addEventListener("click", function(){
-    //can't seem to get event listener to work. moving on.
-//var searchTerm = document.getElementById("input");
+function changeHTML(){
+    var searchTerm= document.getElementById("input").value;
+    let requestURL = 'https://www.reddit.com/search.json?q=' +searchTerm;
+    console.log(requestURL);
+}
+document.addEventListener("click", changeHTML);
+    //can't seem to get event listener to work on button, just sampling with document until later
+//isn't pulling from the site
+
     function makeCarousel(){
         const carouselDiv = document.createElement('div');
         carouselDiv.classList.add('carousel-item');
@@ -26,7 +36,6 @@ button.addEventListener("click", function(){
     pictures.forEach(makeCarousel)}
 
 console.log(jsonData);
-});
 });
   
 //pictures found in data.children.data.thumbnail
