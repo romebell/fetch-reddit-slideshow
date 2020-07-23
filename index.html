@@ -9,12 +9,24 @@
 </head>
 <body>
   <div class="title">
+    <!-- <div class="jumbotron">
+      <h1 class="display-4">Reddit Slide Show</h1>
+      <p class="lead">Search below to see what's good.</p>
+      <hr class="my-4">
+      <p>Using Reddit API to create slide show of images</p>
+      <a class="btn btn-primary btn-lg" href="https://www.reddit.com/" role="button">Actual Reddit</a>
+    </div> -->
     <h1>Reddit Slide Show</h1>
     <h2>Search below to see what's good</h2>
   </div>
-  <input type="search" placeholder="search">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Search:</span>
+    </div>
+    <input type="text" class="form-control" placeholder="What you want, what you need, hit me up I got you man" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
   <div id="go">
-    <button type='button'>GetErDone</button>
+    <button type='button' class="btn btn-outline-success">GetErDone</button>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
