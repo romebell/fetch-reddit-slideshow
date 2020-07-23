@@ -1,0 +1,36 @@
+@media(min-width: 600px){
+
+    body {
+    background-image: url("https://goldwallpapers.com/uploads/posts/marvel-vs-capcom-2-wallpaper/marvel_vs_capcom_2_wallpaper_023.jpg");
+   
+    }
+}
+@media(min-width: 480px){
+
+    body {
+    background-image: url("https://goldwallpapers.com/uploads/posts/marvel-vs-capcom-2-wallpaper/marvel_vs_capcom_2_wallpaper_023.jpg");
+   }
+}
+@media(min-width: 300px){
+
+    body {
+    background-image: url("https://goldwallpapers.com/uploads/posts/marvel-vs-capcom-2-wallpaper/marvel_vs_capcom_2_wallpaper_023.jpg");
+   }
+}
+
+h1 {
+    font-family: sans-serif;
+    text-align: center;
+    color: white;
+    margin: 100px;
+
+}
+
+.my-0{
+    display: flex;
+    align-items: center;
+    font-size: x-large; 
+    color: white;
+   
+
+}

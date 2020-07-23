@@ -5,8 +5,8 @@ console.log(container)
 const searchInput = document.getElementById('inputSearch')
 console.log('search bar input ' + searchInput)
 
-searchInput.addEventListener('input', () =>{
-    console.log('input event is going')
+searchInput.addEventListener('input', (event) =>{
+    console.log(event.target.value)
 })
 
 fetch('https://secure-hamlet-19722.herokuapp.com/api/v1/characters')
