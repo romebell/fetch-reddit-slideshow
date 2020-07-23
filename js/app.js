@@ -15,9 +15,14 @@ fetch('https://www.reddit.com/search.json?q=cats+nsfw:no')
 .then(jsonData => {
     let data = jsonData.data
     let children = data.children
-    let eachChild = children[1]
-    let childData = eachChild.data
-    let picture = childData.thumbnail
-    console.log(picture);
-
+    let pictureUrls = []
+    children.forEach(eachChild => {
+        let childData = eachChild.data
+        let pictureUrl = childData.thumbnail
+        if (pictureUrl !== 'self'){
+            pictureUrls.push(pictureUrl)
+        }        
+    })
+    console.log(pictureUrls)  
 })
+
