@@ -15,16 +15,23 @@ form.addEventListener("submit", function(e){
         let thumbSearch = data.data.children;
         console.log(data)
         
-        for (let i = 0; 1 < 9; i++){
+        for (let i = 0; i < thumbSearch.length; i++){
             
-            let  = thumbnails = thumbSearch[1].data.thumnail;
-            console.log(thumbnails);
+            let thumbNails = thumbSearch[5].data.thumbail;
+            console.log(thumbNails);
+            
+            // const displayP = document.getElementsByTagName('body');
+            // displayP.src = thumbNails;
+            // .appendChild(thumbNails);
+            // console.log();
+
         }
-        
+
     })
 
-    console.log(response)
+    //console.log(response)
 })
+
 
 
 
