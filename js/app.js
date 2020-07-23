@@ -4,9 +4,11 @@ document.addEventListener("DOMContentLoaded", function()
     let container = document.querySelector(".container");
     let button = document.querySelector(".start");
     let containerTwo = document.querySelector(".container-2");
+    let pP = document.querySelector(".pauseAndPlay");
     let mechPicture = [];
     let slideIndex = 0;
     let pausedIndex;
+    let killFunction = false;
 
     function displayPic()
     {
@@ -28,7 +30,10 @@ document.addEventListener("DOMContentLoaded", function()
 
             getPics[slideIndex - 1].style.display = "block";
             
-            setTimeout(displayPic, 5000);
+            if (killFunction === false)
+            {
+                setTimeout(displayPic, 2000);
+            }
             
         }
     }
@@ -77,30 +82,45 @@ document.addEventListener("DOMContentLoaded", function()
             }
             displayPic();
 
+            let resumeButton = document.createElement("button");
             let pauseButton = document.createElement("button");
             pauseButton.classList.add("pause");
             pauseButton.textContent = "PAUSE";
-            body.appendChild(pauseButton);
-            body.style.display = "flex";
+            pP.appendChild(pauseButton);
+            pP.style.display = "flex";
             pauseButton.addEventListener("click", function()
             {
                 pausedIndex = slideIndex;
                 slideIndex = null;
                 pauseButton.style.display = "none";
 
-                let resumeButton = document.createElement("button");
                 resumeButton.classList.add("resume");
                 resumeButton.textContent = "RESUME";
-                body.appendChild(resumeButton);
-                body.style.display = "flex";
+                pP.appendChild(resumeButton);
+                pP.style.display = "flex";
                 resumeButton.addEventListener("click", function()
                 {
                     slideIndex = pausedIndex;
                     resumeButton.remove();
                     setTimeout(displayPic, 2000);
                     pauseButton.style.display = "flex";
-                })
-            })
+                });
+            });
+
+            let restartButton = document.createElement("button");
+            restartButton.classList.add("restart");
+            restartButton.textContent = "RESTART"
+            body.appendChild(restartButton);
+            restartButton.addEventListener("click", function()
+            {
+                resumeButton.remove();
+                pauseButton.style.display = "flex";
+                killFunction = true;
+                slideIndex = 0;
+                setTimeout(displayPic, 500);
+                killFunction = false;
+            });
+
 
         });
 
