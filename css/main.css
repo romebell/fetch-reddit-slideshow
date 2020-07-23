@@ -1032,7 +1032,10 @@ legend {
 }
 
 .mySlides {display: none;}
-.mySlides img {vertical-align: middle;}
+.mySlides img {
+  vertical-align: middle;
+  width: 250px;
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -1097,4 +1100,12 @@ legend {
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
+}
+
+.stop {
+  margin: 10px;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
