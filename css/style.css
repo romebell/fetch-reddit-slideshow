@@ -27,7 +27,7 @@ body {
     font-size: 25px;
 }
 
-.button {
+button {
     margin: 10px;
     border-style: none;
 }
