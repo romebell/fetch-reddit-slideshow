@@ -1,6 +1,22 @@
+let searchButton = document.querySelector(".search");
+let body = document.querySelector("body");
+let h1 = document.querySelector("h1");
+let resetButton = document.querySelector(".reset");
+
 
 document.addEventListener("DOMContentLoaded", function (){
-    fetch("https://www.reddit.com/search.json?q=cute+puppies")
+    //images appear only when search button is clicked
+    searchButton.addEventListener("click", event => {
+        const input = document.querySelector(".input").value;
+        let searchInput = input.split(" ").join("+");
+        let requestURL = "https://www.reddit.com/search.json?q=" +searchInput;
+
+        body.removeChild(h1);
+        body.removeChild(searchButton);
+        body.removeChild(resetButton);
+    })
+
+fetch("requestURL")
 .then(responseData => {
     //console.log(responseData);
     return responseData.json();
@@ -18,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function (){
         //console.log(thumbnail);
         setInterval (
         function appendImagetoBody() {
-        //setInterval(2000);
 
         const previousImg = document.querySelector(".images");
         //previousImg.remove();
