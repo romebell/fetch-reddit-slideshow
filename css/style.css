@@ -1,11 +1,14 @@
 body{
     text-align: center;
+    background-color: rgb(59, 104, 105);
+    color: whitesmoke;
 }
 h2{
     margin: auto;
     width: 200px;
     font-size: 12px;
     padding-top: 10px;
+    color: whitesmoke;
 }
 
 .holder{
