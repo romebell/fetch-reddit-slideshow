@@ -22,25 +22,46 @@ document.addEventListener('DOMContentLoaded', function() {
           let results = jsonData;
           let children = results.data.children
           console.log(children);
-          for (let i = 0; i <= 15; i++) {
-              // does a catch() call go in here?
-              let eachImage = children[i].data.thumbnail;
-              let createNewImage = document.createElement('img');
-               // this logic caused no images to display
-              // if (eachImage != 'self' && 
-              // eachImage != 'image' && 
-              // eachImage != undefined &&
-              // eachImage != 'default') { 
-              imageArray.push(eachImage);
-              createNewImage.src = imageArray[i];
-              console.log(createNewImage.src);
-              container.appendChild(createNewImage);
-              // console.log(imageArray);
-              // }
-              }
-          }
+          const childFilter = children.filter(entry => {
+            console.log(entry.data.thumbnail);
+            return (entry.data.thumbnail !== 'self');
+          }) // filter() must return boolean value!
+          console.log(childFilter);
+          const childMap = children.map(entry => {
+            const thumbs = entry.data.thumbnail 
+            if (thumbs.includes('.jpg') || thumbs.includes('.png')) { 
+                return thumbs;
 
-      )
+            }
+          })
+          const logChildren = childMap.filter(image => !!image); // !! means exists
+          console.log(logChildren);
+
+          // does a catch() call go in here?
+          // let eachImage = children[i].data.thumbnail;
+          // imageArray.push(eachImage);
+          let image = document.getElementById('one-image');
+
+          // set interval takes callback and milliseconds
+          image.src = logChildren[0];
+          let count = 1; 
+          setInterval(() => {
+            image.src = logChildren[count];
+            if (count < logChildren.length) {
+              count++;
+
+            } else if (count === logChildren.length) {
+              count = 0;
+            }
+          }, 2000) // one function param
+
+          // erase source as we swap one image for another
+          // set source to next value in array
+          // until we click stop - clear interval - eventListener callback
+              
+              
+        })
+
       .catch(err => {
         // happens if something breaks
         console.log('Error', err)
@@ -70,7 +91,7 @@ function showElements() {
 
 function showStopButton() {
   stopButton.setAttribute('id', 'stop-button');
-  stopButton.textContent = 'Stop Slideshow  '
+  stopButton.textContent = 'Stop Slideshow ';
   container.appendChild(stopButton);
   clickStopButton();
 }
@@ -79,7 +100,8 @@ function clickStopButton() {
   stopButton.addEventListener('click', function() {
     resetPhotos();
     showElements();
-    
+    // clear interval goes here
+
   }
 )};
 
